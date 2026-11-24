@@ -7,7 +7,7 @@ resource "helm_release" "monitoring" {
   namespace = "observability"
 
   create_namespace = true
-  wait             = true
+  wait             = false
   timeout          = 600
 
   set = [
