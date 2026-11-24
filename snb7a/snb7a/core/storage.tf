@@ -14,6 +14,12 @@ resource "ovh_cloud_storage_object_bucket" "scrolls" {
   }
 
   tags = local.tags
+
+  lifecycle {
+    # OVH returns an empty object_lock block when disabled; ignore it to avoid
+    # unnecessary bucket replacement while updating versioning/encryption in-place.
+    ignore_changes = [object_lock]
+  }
 }
 
 resource "ovh_cloud_project_storage_object_bucket_lifecycle_configuration" "scrolls" {

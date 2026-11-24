@@ -19,6 +19,12 @@ resource "ovh_cloud_project_kube" "this" {
   depends_on = [ovh_cloud_gateway.this]
 }
 
+resource "ovh_cloud_project_kube_iprestrictions" "this" {
+  service_name = var.service_name
+  kube_id      = ovh_cloud_project_kube.this.id
+  ips          = var.kube_api_ip_restrictions
+}
+
 resource "ovh_cloud_project_kube_nodepool" "default" {
   service_name = var.service_name
   kube_id      = ovh_cloud_project_kube.this.id

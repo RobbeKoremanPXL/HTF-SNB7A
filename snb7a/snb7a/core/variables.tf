@@ -71,6 +71,12 @@ variable "kube_plan" {
   default     = "free"
 }
 
+variable "kube_api_ip_restrictions" {
+  description = "CIDR blocks allowed to reach the Kubernetes API server (empty list = unrestricted)."
+  type        = list(string)
+  default     = []
+}
+
 variable "node_flavor" {
   description = "Instance flavor of the worker nodes."
   type        = string
