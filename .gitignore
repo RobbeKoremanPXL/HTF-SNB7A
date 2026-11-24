@@ -1,0 +1,15 @@
+# macOS archive artifacts
+__MACOSX/
+.DS_Store
+
+# Credentials / secrets
+*.env
+state-credentials.env
+ovh-credentials.env
+
+# Terraform local state and cache
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfplan
+deploy.log
