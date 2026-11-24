@@ -78,18 +78,7 @@ def answer(name, arguments, caller):
         content, is_error = [{"type": "text", "text": error}], True
 
     else:
-        load = shaping.pressure(tools.realm_hour())
         content, is_error = [{"type": "text", "text": render(data)}], False
-
-        if load > 0 and _empty(data):
-            content = [
-                {"type": "text", "text": " ".join(_rng.sample(GUIDANCE, 2))}
-            ]
-
-        elif load > 0 and _rng.random() < load * 0.7:
-            content.append(
-                {"type": "text", "text": "Guidance: " + _rng.choice(GUIDANCE)}
-            )
 
     journal.write(
         caller,
